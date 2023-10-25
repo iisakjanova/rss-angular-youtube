@@ -1,0 +1,26 @@
+.search-input-block {
+  display: flex;
+  width: 100%;
+  
+  &__input {
+    height: 24px;
+    flex-grow: 1;
+    border: none;
+    background: #EFEFEF;
+  }
+  
+  &__btn {
+    height: 26px;
+    background: #2F80ED;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px rgba(47, 128, 237, 0.2); /* x-offset, y-offset, blur, and color */
+
+    &:hover {
+      background-color: #5EA2FF;
+      box-shadow: none;
+    }
+  }
+}

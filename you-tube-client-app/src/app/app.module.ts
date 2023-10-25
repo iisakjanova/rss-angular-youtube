@@ -12,6 +12,7 @@ import { LogoComponent } from './header-block/logo/logo.component';
 import { SearchInputComponent } from './header-block/search-input/search-input.component';
 import { SettingsButtonComponent } from './header-block/settings-button/settings-button.component';
 import { CommentsCountComponent } from './search-results-block/search-item/comments-count/comments-count.component';
+import { CountersComponent } from './search-results-block/search-item/counters/counters.component';
 import { DislikesCountComponent } from './search-results-block/search-item/dislikes-count/dislikes-count.component';
 import { LikesCountComponent } from './search-results-block/search-item/likes-count/likes-count.component';
 import { MoreButtonComponent } from './search-results-block/search-item/more-button/more-button.component';
@@ -41,6 +42,7 @@ import { SearchResultsComponent } from './search-results-block/search-results/se
     VideoTitleComponent,
     MoreButtonComponent,
     VideoThumbnailComponent,
+    CountersComponent,
   ],
   imports: [
     BrowserModule,

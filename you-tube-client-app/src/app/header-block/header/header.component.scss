@@ -1,0 +1,22 @@
+.header {
+  background: #E5E5E5;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__left-block {
+      display: flex;
+      align-items: center;
+      width: 75%;
+    }
+  }
+
+  app-search-input {
+    flex-grow: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+    max-width: 476px;
+  }
+}
