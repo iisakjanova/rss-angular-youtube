@@ -1,3 +1,3 @@
-<div class="container cards-list">
+<div class="container cards-list" *ngIf="searchService.showResults">
   <app-search-item *ngFor="let item of searchItems" [item]="item"></app-search-item>
 </div>
