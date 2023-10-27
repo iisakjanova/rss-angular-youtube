@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
   selector: 'app-settings-button',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./settings-button.component.scss'],
 })
 export class SettingsButtonComponent {
+  constructor(public filterService: FilterService) {}
 
+  onSettingsClick() {
+    this.filterService.toggleShowFilters();
+  }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 @Component({
   selector: 'app-filtering',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./filtering.component.scss'],
 })
 export class FilteringComponent {
-
+  constructor(public filterService: FilterService) {}
 }

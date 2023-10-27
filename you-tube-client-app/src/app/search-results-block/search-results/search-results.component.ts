@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import data from '../../../assets/mock-response.json';
-import { SearchService } from '../../services/search.service';
+import { SearchService } from '../../services/search/search.service';
 import type { SearchItem } from '../search-item-model';
 
 @Component({
