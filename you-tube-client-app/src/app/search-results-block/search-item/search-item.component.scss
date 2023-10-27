@@ -1,10 +1,12 @@
 .card {
-  margin-bottom: 20px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
   background: #E5E5E5;
   border-radius: 5px;
   border-bottom: 5px solid #2F80ED;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* x-offset, y-offset, blur, and color */
+  width: 100%;
 
   app-counters {
     width: 100%;
@@ -14,5 +16,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
+  }
+
+  app-video-title {
+    flex-grow: 1;
   }
 }

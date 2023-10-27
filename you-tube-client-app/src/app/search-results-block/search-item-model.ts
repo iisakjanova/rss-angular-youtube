@@ -1,7 +1,7 @@
-interface SearchItemSnippetThumbnail {
+export interface SearchItemSnippetThumbnail {
   url: string,
-  width: string,
-  height: string,
+  width: number,
+  height: number,
 }
 
 interface SearchItemSnippetThumbnails {
@@ -29,9 +29,10 @@ interface SearchItemSnippet {
   liveBroadcastContent: string,
   localized: SearchItemSnippetLocalized,
   defaultAudioLanguage: string,
+  defaultLanguage?: string,
 }
 
-interface SearchItemStatistics {
+export interface SearchItemStatistics {
   viewCount: string,
   likeCount: string,
   dislikeCount: string,

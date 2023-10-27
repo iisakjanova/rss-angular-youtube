@@ -1,6 +1,6 @@
 <div class="counters">
-  <app-views-count></app-views-count>
-  <app-likes-count></app-likes-count>
-  <app-dislikes-count></app-dislikes-count>
-  <app-comments-count></app-comments-count>
+  <app-views-count [viewCount]="statistics.viewCount"></app-views-count>
+  <app-likes-count [likeCount]="statistics.likeCount"></app-likes-count>
+  <app-dislikes-count [dislikeCount]="statistics.dislikeCount"></app-dislikes-count>
+  <app-comments-count [commentCount]="statistics.commentCount"></app-comments-count>
 </div>

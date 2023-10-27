@@ -1,9 +1,25 @@
 .cards-list {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding-top: 30px;
+  flex-wrap: wrap;
 
   app-search-item {
     width: 22%;
+    margin: 0 15px 20px 15px;
+    display: flex;
+    max-width: 283px;
+
+    @media screen and (max-width: 1200px) {
+      width: 32%;
+    }
+
+    @media screen and (max-width: 850px) {
+      width: 50%;
+    }
+
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
   }
 }
