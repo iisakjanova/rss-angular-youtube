@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CustomButtonComponent } from './custom-button/custom-button/custom-button.component';
 import { BorderHighlightDirective } from './directives/border-highlight/border-highlight.directive';
 import { FilterInputComponent } from './filtering-block/filter-input/filter-input.component';
 import { FilteringComponent } from './filtering-block/filtering/filtering.component';
@@ -50,6 +51,7 @@ import { SearchResultsComponent } from './search-results-block/search-results/se
     SortPipe,
     BorderHighlightDirective,
     SearchFilterPipe,
+    CustomButtonComponent,
   ],
   imports: [
     BrowserModule,
