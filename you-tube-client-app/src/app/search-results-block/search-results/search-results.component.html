@@ -1,5 +1,5 @@
 <div class="container cards-list" *ngIf="searchService.showResults">
-  <app-search-item *ngFor="let item of searchItems | sort: sortingService.sortOrder: sortingService.sortCriteria | searchFilter: filterService.searchTerm" 
+  <app-search-item *ngFor="let item of searchItems | searchFilter: filterService.searchTerm | sort: sortingService.sortOrder: sortingService.sortCriteria" 
   [item]="item" 
   [publicationDate]="item.snippet.publishedAt"
   appBorderHighlight
