@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { BorderHighlightDirective } from './directives/border-highlight/border-highlight.directive';
 import { FilterInputComponent } from './filtering-block/filter-input/filter-input.component';
 import { FilteringComponent } from './filtering-block/filtering/filtering.component';
 import { SortButtonsComponent } from './filtering-block/sort-buttons/sort-buttons.component';
@@ -45,6 +46,7 @@ import { SearchResultsComponent } from './search-results-block/search-results/se
     VideoThumbnailComponent,
     CountersComponent,
     SortPipe,
+    BorderHighlightDirective,
   ],
   imports: [
     BrowserModule,
