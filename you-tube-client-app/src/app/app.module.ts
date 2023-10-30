@@ -51,12 +51,12 @@ import { SearchResultsComponent } from './search-results-block/search-results/se
     SortPipe,
     BorderHighlightDirective,
     SearchFilterPipe,
-    CustomButtonComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    CustomButtonComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
