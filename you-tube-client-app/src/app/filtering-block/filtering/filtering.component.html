@@ -2,6 +2,6 @@
   <div class="filtering__inner container">
     <p>Sorting by:</p>
     <app-sort-buttons></app-sort-buttons>
-    <app-filter-input></app-filter-input>
+    <app-filter-input [(ngModel)]="searchTerm" (inputSubmitted)="handleInputSubmit()" ngDefaultControl></app-filter-input>
   </div>
 </div>

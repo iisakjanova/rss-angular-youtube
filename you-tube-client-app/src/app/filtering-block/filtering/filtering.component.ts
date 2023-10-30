@@ -7,5 +7,15 @@ import { FilterService } from 'src/app/services/filter/filter.service';
   styleUrls: ['./filtering.component.scss'],
 })
 export class FilteringComponent {
+  searchTerm = '';
+
   constructor(public filterService: FilterService) {}
+
+  onSearchTermChange(searchTerm: string) {
+    this.searchTerm = searchTerm;
+  }
+
+  handleInputSubmit() {
+    this.filterService.setSearchTerm(this.searchTerm);
+  }
 }

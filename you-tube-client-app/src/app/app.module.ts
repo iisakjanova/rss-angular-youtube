@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -12,6 +13,7 @@ import { LoginInfoComponent } from './header-block/login-info/login-info.compone
 import { LogoComponent } from './header-block/logo/logo.component';
 import { SearchInputComponent } from './header-block/search-input/search-input.component';
 import { SettingsButtonComponent } from './header-block/settings-button/settings-button.component';
+import { SearchFilterPipe } from './pipes/search-filter/search-filter.pipe';
 import { SortPipe } from './pipes/sort/sort.pipe';
 import { CommentsCountComponent } from './search-results-block/search-item/comments-count/comments-count.component';
 import { CountersComponent } from './search-results-block/search-item/counters/counters.component';
@@ -47,10 +49,12 @@ import { SearchResultsComponent } from './search-results-block/search-results/se
     CountersComponent,
     SortPipe,
     BorderHighlightDirective,
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,4 @@
-<div class="filter-input">
-  <button class="filtering-block-button">by word or sentence</button>
-  <input class="filter-input__input" />
-</div>
+<form class="filter-input" (submit)="onFormSubmit()">
+  <button class="filtering-block-button" >by word or sentence</button>
+  <input class="filter-input__input" [(ngModel)]="searchTerm" name="searchTerm"/>
+</form>

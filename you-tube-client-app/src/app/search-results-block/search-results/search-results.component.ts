@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FilterService } from 'src/app/services/filter/filter.service';
 
 import data from '../../../assets/mock-response.json';
 import { SearchService } from '../../services/search/search.service';
@@ -13,5 +14,9 @@ import type { SearchItem } from '../search-item-model';
 export class SearchResultsComponent {
   searchItems: SearchItem[] = data.items;
 
-  constructor(public searchService: SearchService, public sortingService: SortingService) {}
+  constructor(
+    public searchService: SearchService,
+    public sortingService: SortingService,
+    public filterService: FilterService,
+  ) {}
 }

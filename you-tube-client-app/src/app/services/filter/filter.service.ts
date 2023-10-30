@@ -6,7 +6,13 @@ import { Injectable } from '@angular/core';
 export class FilterService {
   showFilters = false;
 
+  searchTerm = '';
+
   toggleShowFilters() {
     this.showFilters = !this.showFilters;
+  }
+
+  setSearchTerm(searchTerm: string) {
+    this.searchTerm = searchTerm;
   }
 }

@@ -35,7 +35,7 @@
         "class-methods-use-this": [
           "error",
           {
-            "exceptMethods": ["getCompareValue"]
+            "exceptMethods": ["getCompareValue", "transform"]
           }
         ],
         // TypeScript Eslint rules
