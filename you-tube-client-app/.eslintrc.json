@@ -32,6 +32,12 @@
         ],
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",
+        "class-methods-use-this": [
+          "error",
+          {
+            "exceptMethods": ["getCompareValue"]
+          }
+        ],
         // TypeScript Eslint rules
         "@typescript-eslint/indent": [
             "error",
