@@ -27,8 +27,11 @@
         "import/newline-after-import": "error",
         "import/no-duplicates": "error",
         "max-len": [
-            "error",
-            120
+          "error",
+          {
+            "code": 120,
+            "ignorePattern":"^(import\\s.+\\sfrom\\s.+|\\} from)"
+          }
         ],
         "simple-import-sort/imports": "error",
         "simple-import-sort/exports": "error",

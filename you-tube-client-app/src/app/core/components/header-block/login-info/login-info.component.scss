@@ -1,0 +1,15 @@
+.login-info {
+  display: flex;
+  align-items: center;
+
+  &__name {
+    margin: 0 8px 0 8px;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    background: url('../../../../../assets/login.svg') 0 0 no-repeat;
+    background-size: contain;
+  }
+}
