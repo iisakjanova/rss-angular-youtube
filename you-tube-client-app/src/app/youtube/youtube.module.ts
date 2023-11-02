@@ -17,8 +17,11 @@ import { VideoTitleComponent } from './components/search-results-block/search-it
 import { ViewsCountComponent } from './components/search-results-block/search-item/views-count/views-count.component';
 import { SearchResultsComponent } from './components/search-results-block/search-results/search-results.component';
 import { BorderHighlightDirective } from './directives/border-highlight/border-highlight.directive';
+import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SearchFilterPipe } from './pipes/search-filter/search-filter.pipe';
 import { SortPipe } from './pipes/sort/sort.pipe';
+import { YoutubeRoutingModule } from './youtube-routing.module';
 
 @NgModule({
   declarations: [
@@ -38,11 +41,14 @@ import { SortPipe } from './pipes/sort/sort.pipe';
     SortPipe,
     SearchFilterPipe,
     BorderHighlightDirective,
+    MainPageComponent,
+    DetailedPageComponent,
   ],
   imports: [
     FormsModule,
     CommonModule,
     CustomButtonComponent,
+    YoutubeRoutingModule,
   ],
   exports: [FilteringComponent, SearchResultsComponent],
 })

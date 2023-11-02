@@ -5,6 +5,7 @@ import { LoginInfoComponent } from './components/header-block/login-info/login-i
 import { LogoComponent } from './components/header-block/logo/logo.component';
 import { SearchInputComponent } from './components/header-block/search-input/search-input.component';
 import { SettingsButtonComponent } from './components/header-block/settings-button/settings-button.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,11 @@ import { SettingsButtonComponent } from './components/header-block/settings-butt
     LogoComponent,
     SearchInputComponent,
     SettingsButtonComponent,
+    NotFoundPageComponent,
   ],
-  exports: [HeaderComponent],
+  exports: [
+    HeaderComponent,
+    NotFoundPageComponent,
+  ],
 })
 export class CoreModule {}
