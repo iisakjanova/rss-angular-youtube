@@ -1,0 +1,19 @@
+.not-found-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+
+  &__img {
+    width: 100px;
+    height: 90px;
+    background: url('../../../../assets/404.svg') no-repeat;
+  }
+
+  &__text {
+    padding-left: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #828282;
+  }
+}
