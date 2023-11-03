@@ -1,0 +1,23 @@
+<div *ngIf="item" class="detailed-card">
+  <button class="detailed-card__btn" appButtonHighlight><</button>
+  <div class="detailed-card__inner">
+    <div class="detailed-card__video-thumbnail">
+      <img src={{item.snippet.thumbnails.standard.url}} alt={{item.snippet.title}} />
+    </div>
+    <div class="detailed-card__content" appBorderHighlight>
+      <div class="detailed-card__header">
+        <h2 class="detailed-card__header__title">{{item.snippet.title}}</h2>
+        <p class="detailed-card__header__date">{{item.snippet.publishedAt}}</p>
+      </div>
+      <div class="detailed-card__description">
+        <p class="detailed-card__description__title">
+          Description:
+        </p>
+        <p class="detailed-card__description__text">
+          {{item.snippet.description}}
+        </p>
+      </div>
+      <app-counters [statistics]="item.statistics"></app-counters>
+    </div>
+  </div>
+</div>

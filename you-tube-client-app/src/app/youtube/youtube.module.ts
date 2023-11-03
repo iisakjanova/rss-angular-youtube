@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { CustomButtonComponent } from './components/custom-button/custom-button/custom-button.component';
+import { DetailedCardComponent } from './components/detailed-card/detailed-card.component';
 import { FilterInputComponent } from './components/filtering-block/filter-input/filter-input.component';
 import { FilteringComponent } from './components/filtering-block/filtering/filtering.component';
 import { SortButtonsComponent } from './components/filtering-block/sort-buttons/sort-buttons.component';
@@ -17,6 +18,7 @@ import { VideoTitleComponent } from './components/search-results-block/search-it
 import { ViewsCountComponent } from './components/search-results-block/search-item/views-count/views-count.component';
 import { SearchResultsComponent } from './components/search-results-block/search-results/search-results.component';
 import { BorderHighlightDirective } from './directives/border-highlight/border-highlight.directive';
+import { ButtonHighlightDirective } from './directives/button-highlight/button-highlight.directive';
 import { DetailedPageComponent } from './pages/detailed-page/detailed-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { SearchFilterPipe } from './pipes/search-filter/search-filter.pipe';
@@ -43,6 +45,8 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     BorderHighlightDirective,
     MainPageComponent,
     DetailedPageComponent,
+    DetailedCardComponent,
+    ButtonHighlightDirective,
   ],
   imports: [
     FormsModule,
