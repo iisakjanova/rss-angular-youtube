@@ -1,8 +1,7 @@
 <div class="container cards-list" *ngIf="searchService.showResults">
-  <app-search-item *ngFor="let item of searchItems | searchFilter: filterService.searchTerm | sort: sortingService.sortOrder: sortingService.sortCriteria" 
+  <app-search-item *ngFor="let item of youtubeService.searchItems | searchFilter: filterService.searchTerm | sort: sortingService.sortOrder: sortingService.sortCriteria" 
   [item]="item" 
   [publicationDate]="item.snippet.publishedAt"
   appBorderHighlight
 ></app-search-item>
 </div>
-
