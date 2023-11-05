@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import data from 'src/assets/mock-response.json';
 
-import data from '../../../../assets/mock-response.json';
 import type { SearchItem } from '../../components/search-results-block/search-item-model';
 
 @Component({

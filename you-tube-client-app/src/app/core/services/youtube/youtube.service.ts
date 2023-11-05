@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SearchItem } from 'src/app/youtube/components/search-results-block/search-item-model';
-
-import data from '../../../../assets/mock-response.json';
+import data from 'src/assets/mock-response.json';
 
 @Injectable({
   providedIn: 'root',

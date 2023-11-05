@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FilterService } from 'src/app/core/services/filter/filter.service';
+import { SearchService } from 'src/app/core/services/search/search.service';
+import { SortingService } from 'src/app/core/services/sort/sorting.service';
 import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
-
-import { SearchService } from '../../../../core/services/search/search.service';
-import { SortingService } from '../../../../core/services/sort/sorting.service';
 
 @Component({
   selector: 'app-search-results',
