@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NavigationExtras, Router } from '@angular/router';
+
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -6,5 +9,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
+  constructor(public authService: AuthService, public router: Router) {
+  }
 
+  login(e: Event) {
+    e.preventDefault();
+
+    this.authService.login().subscribe(() => {
+      if (this.authService.isLoggedIn) {
+        const redirectUrl = '/youtube';
+
+        const navigationExtras: NavigationExtras = {
+          queryParamsHandling: 'preserve',
+        };
+
+        this.router.navigate([redirectUrl], navigationExtras);
+      }
+    });
+  }
+
+  logout(e: Event) {
+    e.preventDefault();
+
+    const redirectUrl = '/login';
+    this.authService.logout();
+    this.router.navigate([redirectUrl]);
+  }
 }

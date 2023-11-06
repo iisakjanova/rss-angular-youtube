@@ -6,20 +6,37 @@ import { delay, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedIn = false;
+  isLoggedIn = this.checkLoginStatus();
 
-  redirectUrl: string | null = null;
+  authTokenKey = 'authToken';
+
+  authTokenValue = 'fakeAuthToken';
+
+  saveAuthToken(token: string): void {
+    localStorage.setItem(this.authTokenKey, token);
+  }
+
+  removeAuthToken() {
+    localStorage.removeItem(this.authTokenKey);
+  }
+
+  checkLoginStatus(): boolean {
+    const authToken = localStorage.getItem(this.authTokenKey);
+    return !!authToken;
+  }
 
   login(): Observable<boolean> {
     return of(true).pipe(
       delay(1000),
       tap(() => {
         this.isLoggedIn = true;
+        this.saveAuthToken(this.authTokenValue);
       }),
     );
   }
 
   logout(): void {
     this.isLoggedIn = false;
+    this.removeAuthToken();
   }
 }
