@@ -27,12 +27,4 @@ export class LoginFormComponent {
       }
     });
   }
-
-  logout(e: Event) {
-    e.preventDefault();
-
-    const redirectUrl = '/login';
-    this.authService.logout();
-    this.router.navigate([redirectUrl]);
-  }
 }

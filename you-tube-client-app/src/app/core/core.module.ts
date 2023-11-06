@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { HeaderComponent } from './components/header-block/header/header.component';
@@ -9,6 +10,7 @@ import { NotFoundMessageComponent } from './components/not-found-message/not-fou
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
+  imports: [CommonModule],
   declarations: [
     HeaderComponent,
     LoginInfoComponent,

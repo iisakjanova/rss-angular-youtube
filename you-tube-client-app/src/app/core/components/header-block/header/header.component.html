@@ -6,6 +6,13 @@
       <app-settings-button></app-settings-button>
     </div>
     <app-login-info></app-login-info>
+    <button 
+      class="header__logout-btn" 
+      type="button" 
+      (click)="logout($event)" 
+      *ngIf="authService.isLoggedIn"
+      >
+        Logout
+    </button>
   </div>
 </header>
-

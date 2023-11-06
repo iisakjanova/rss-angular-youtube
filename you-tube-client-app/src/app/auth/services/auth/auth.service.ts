@@ -6,11 +6,15 @@ import { delay, tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedIn = this.checkLoginStatus();
-
   authTokenKey = 'authToken';
 
   authTokenValue = 'fakeAuthToken';
+
+  constructor() {
+    this.isLoggedIn = this.checkLoginStatus();
+  }
+
+  isLoggedIn: boolean;
 
   saveAuthToken(token: string): void {
     localStorage.setItem(this.authTokenKey, token);

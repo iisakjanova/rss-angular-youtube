@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  constructor(public authService: AuthService, private router: Router) {}
 
+  logout(e: Event) {
+    e.preventDefault();
+
+    const redirectUrl = '/login';
+    this.authService.logout();
+    this.router.navigate([redirectUrl]);
+  }
 }
