@@ -1,10 +1,10 @@
 <div *ngIf="item" class="detailed-card">
-  <a [routerLink]="['/youtube']" class="detailed-card__btn" appButtonHighlight><</a>
+  <a [routerLink]="['/youtube']" class="detailed-card__btn" [publicationDate]="item.snippet.publishedAt" appButtonHighlight><</a>
   <div class="detailed-card__inner">
     <div class="detailed-card__video-thumbnail">
       <img src={{item.snippet.thumbnails.standard.url}} alt={{item.snippet.title}} />
     </div>
-    <div class="detailed-card__content" appBorderHighlight>
+    <div class="detailed-card__content" [publicationDate]="item.snippet.publishedAt" appBorderHighlight>
       <div class="detailed-card__header">
         <h2 class="detailed-card__header__title">{{item.snippet.title}}</h2>
         <p class="detailed-card__header__date">{{item.snippet.publishedAt}}</p>
