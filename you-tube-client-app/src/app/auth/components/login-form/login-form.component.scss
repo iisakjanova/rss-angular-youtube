@@ -35,12 +35,16 @@
     color: #FFFFFF;
     border: none;
     border-radius: 4px;
-    cursor: pointer;
     box-shadow: 2px 2px 4px rgba(47, 128, 237, 0.2); /* x-offset, y-offset, blur, and color */
   
-    &:hover {
+    &:not(:disabled):hover {
       background-color: #5EA2FF;
       box-shadow: none;
+      cursor: pointer;
+    }
+
+    &:disabled {
+      background-color: #B1B1B1;
     }
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 
 import { AuthService } from '../../services/auth/auth.service';
@@ -9,22 +10,36 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
-  constructor(public authService: AuthService, public router: Router) {
+  loginForm!: FormGroup;
+
+  constructor(
+    private fb: FormBuilder,
+    public authService: AuthService,
+    public router: Router,
+  ) {
+    this.loginForm = this.fb.group({
+      login: ['', Validators.required],
+      password: ['', Validators.required],
+    });
   }
 
   login(e: Event) {
     e.preventDefault();
+    const login = this.loginForm.get('login')?.value;
+    const password = this.loginForm.get('password')?.value;
 
-    this.authService.login().subscribe(() => {
-      if (this.authService.isLoggedIn) {
-        const redirectUrl = '/youtube';
+    if (login && password) {
+      this.authService.login().subscribe(() => {
+        if (this.authService.isLoggedIn) {
+          const redirectUrl = '/youtube';
 
-        const navigationExtras: NavigationExtras = {
-          queryParamsHandling: 'preserve',
-        };
+          const navigationExtras: NavigationExtras = {
+            queryParamsHandling: 'preserve',
+          };
 
-        this.router.navigate([redirectUrl], navigationExtras);
-      }
-    });
+          this.router.navigate([redirectUrl], navigationExtras);
+        }
+      });
+    }
   }
 }
