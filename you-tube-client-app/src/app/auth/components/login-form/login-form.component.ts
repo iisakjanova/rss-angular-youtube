@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
 
+import { passwordStrengthValidator } from '../../helpers/passwordStrengthValidator';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -18,8 +23,8 @@ export class LoginFormComponent {
     public router: Router,
   ) {
     this.loginForm = this.fb.group({
-      login: ['', Validators.required],
-      password: ['', Validators.required],
+      login: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, passwordStrengthValidator]],
     });
   }
 

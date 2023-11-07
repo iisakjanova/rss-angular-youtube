@@ -3,12 +3,72 @@
   <form [formGroup]="loginForm" class="login-form__form">
     <label class="login-form__label">
       login
-      <input formControlName="login" type="text" class="login-form__input"/>
+      <input 
+        formControlName="login" 
+        type="text" 
+        class="login-form__input"
+        [ngClass]="{ 'input-error': (loginForm.get('login')?.hasError('required') || 
+          loginForm.get('login')?.hasError('email') ) && 
+          loginForm.get('login')?.touched }"
+      />
     </label>
+    <div 
+      class="login-form__error-message" 
+      *ngIf="loginForm.get('login')?.hasError('required') && 
+        loginForm.get('login')?.touched">
+      Please enter a login email.
+    </div>
+    <div 
+      class="login-form__error-message" 
+      *ngIf="loginForm.get('login')?.hasError('email') && 
+        loginForm.get('login')?.touched">
+      The login email is invalid.
+    </div>
     <label class="login-form__label">
       password
-      <input formControlName="password" type="password" class="login-form__input"/>
+      <input 
+        formControlName="password" 
+        type="password" 
+        class="login-form__input"
+      />
     </label>
-    <button (click)="login($event)" class="login-form__btn" [disabled]="loginForm.invalid">Login</button>
+    <div 
+      class="login-form__error-message" 
+      *ngIf="loginForm.get('password')?.hasError('required') && 
+        loginForm.get('password')?.touched">
+      Please enter a password.
+    </div>
+    <div 
+      class="login-form__error-message" 
+      *ngIf="loginForm.get('password')?.hasError('passwordStrength') && 
+        loginForm.get('password')?.touched">
+      {{ loginForm.get('password')?.getError('passwordStrength') }}
+      <div 
+        *ngIf="loginForm.get('password')?.hasError('minLength')"> 
+        {{ loginForm.get('password')?.getError('minLength') }}
+      </div>
+      <div  
+        *ngIf="loginForm.get('password')?.hasError('uppercase')"> 
+        {{ loginForm.get('password')?.getError('uppercase') }}
+      </div>
+      <div 
+        *ngIf="loginForm.get('password')?.hasError('lowercase')"> 
+        {{ loginForm.get('password')?.getError('lowercase') }}
+      </div>
+      <div 
+        *ngIf="loginForm.get('password')?.hasError('digit')"> 
+        {{ loginForm.get('password')?.getError('digit') }}
+      </div>
+      <div 
+        *ngIf="loginForm.get('password')?.hasError('specialChar')"> 
+        {{ loginForm.get('password')?.getError('specialChar') }}
+      </div>
+    </div>
+    <button 
+      (click)="login($event)" 
+      class="login-form__btn" 
+      [disabled]="loginForm.invalid">
+      Login
+    </button>
   </form>
 </div>

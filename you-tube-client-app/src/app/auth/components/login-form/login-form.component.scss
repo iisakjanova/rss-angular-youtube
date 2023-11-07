@@ -26,6 +26,10 @@
     border: none;
   }
 
+  &__error-message {
+    color: #EB5757;
+  }
+
   &__btn {
     margin-top: 20px;
     margin-left: auto;
@@ -46,5 +50,9 @@
     &:disabled {
       background-color: #B1B1B1;
     }
+  }
+
+  .input-error {
+    border-bottom: 5px solid #EB5757;
   }
 }
