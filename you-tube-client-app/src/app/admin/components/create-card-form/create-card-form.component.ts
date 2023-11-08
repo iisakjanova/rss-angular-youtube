@@ -5,6 +5,8 @@ import {
   Validators,
 } from '@angular/forms';
 
+import { futureDateValidator } from '../../helpers/futureDateValidator';
+
 @Component({
   selector: 'app-create-card-form',
   templateUrl: './create-card-form.component.html',
@@ -23,11 +25,11 @@ export class CreateCardFormComponent {
 
   constructor(private fb: FormBuilder) {
     this.createCardForm = this.fb.group({
-      title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      description: ['', [Validators.maxLength(255)]],
       image: ['', [Validators.required]],
       video: ['', [Validators.required]],
-      date: ['', [Validators.required]],
+      date: ['', [Validators.required, futureDateValidator]],
     });
   }
 

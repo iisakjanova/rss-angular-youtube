@@ -7,8 +7,12 @@
         formControlName="title" 
         type="text" 
         class="create-card-form__input"
-        [ngClass]="{ 'input-error': createCardForm.get('title')?.hasError('required') && 
-        createCardForm.get('title')?.touched }"
+        [ngClass]="{ 'input-error': 
+          (createCardForm.get('title')?.hasError('required') || 
+          createCardForm.get('title')?.hasError('minlength') || 
+          createCardForm.get('title')?.hasError('maxlength') ) && 
+          createCardForm.get('title')?.touched 
+        }"
       />
     </label>
     <div 
@@ -17,21 +21,33 @@
       createCardForm.get('title')?.touched">
       Please enter a title.
     </div>
+    <div 
+      class="create-card-form__error-message" 
+      *ngIf="createCardForm.get('title')?.hasError('minlength') && 
+      createCardForm.get('title')?.touched">
+      The title is too short.
+    </div>
+    <div 
+      class="create-card-form__error-message" 
+      *ngIf="createCardForm.get('title')?.hasError('maxlength') && 
+      createCardForm.get('title')?.touched">
+      The title is too long.
+    </div>
     <label class="create-card-form__label">
       Description
       <input 
         formControlName="description" 
         type="text" 
         class="create-card-form__input"
-        [ngClass]="{ 'input-error': createCardForm.get('description')?.hasError('required') && 
+        [ngClass]="{ 'input-error': createCardForm.get('description')?.hasError('maxlength') && 
         createCardForm.get('description')?.touched }"
       />
     </label>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('description')?.hasError('required') && 
+      *ngIf="createCardForm.get('description')?.hasError('maxlength') && 
       createCardForm.get('description')?.touched">
-      Please enter a description.
+      The description is too long.
     </div>
     <label class="create-card-form__label">
       Img
@@ -69,9 +85,9 @@
       Creation date
       <input 
         formControlName="date" 
-        type="text" 
+        type="date" 
         class="create-card-form__input"
-        [ngClass]="{ 'input-error': createCardForm.get('date')?.hasError('required') && 
+        [ngClass]="{ 'input-error': createCardForm.get('date')?.hasError('futureDate') && 
         createCardForm.get('date')?.touched }"
       />
     </label>
@@ -80,6 +96,12 @@
       *ngIf="createCardForm.get('date')?.hasError('required') && 
       createCardForm.get('date')?.touched">
       Please enter a creation date.
+    </div>
+    <div 
+      class="create-card-form__error-message" 
+      *ngIf="createCardForm.get('date')?.hasError('futureDate') && 
+      createCardForm.get('date')?.touched">
+      The date is invalid.
     </div>
     <button 
       (click)="createCard($event)" 
