@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: column;
     font-size: 10px;
+    color: #828282;
   }
 
   &__input {
@@ -55,4 +56,5 @@
   .input-error {
     border-bottom: 5px solid #EB5757;
   }
+  
 }

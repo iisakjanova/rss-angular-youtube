@@ -1,0 +1,59 @@
+.create-card-form {
+  padding: 20px;
+  background: #F2F2F2;
+  border-radius: 4px;
+
+  &__title {
+    color: #000000;
+    font-size: 18px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    font-size: 10px;
+    color: #828282;
+  }
+
+  &__input {
+    margin: 5px 0;
+    height: 37px;
+    background: #E0E0E0;
+    border: none;
+  }
+
+  &__error-message {
+    color: #EB5757;
+  }
+
+  &__btn {
+    margin-top: 20px;
+    margin-left: auto;
+    width: 120px;
+    height: 32px;
+    background: #2F80ED;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px rgba(47, 128, 237, 0.2); /* x-offset, y-offset, blur, and color */
+  
+    &:not(:disabled):hover {
+      background-color: #5EA2FF;
+      box-shadow: none;
+      cursor: pointer;
+    }
+
+    &:disabled {
+      background-color: #B1B1B1;
+    }
+  }
+
+  .input-error {
+    border-bottom: 5px solid #EB5757;
+  }  
+}

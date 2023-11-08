@@ -1,1 +1,91 @@
-<p>create-card-form works!</p>
+<div class="create-card-form">
+  <h3 class="create-card-form__title">Create new card</h3>
+  <form [formGroup]="createCardForm" class="create-card-form__form">
+    <label class="create-card-form__label">
+      Title
+      <input 
+        formControlName="title" 
+        type="text" 
+        class="create-card-form__input"
+        [ngClass]="{ 'input-error': createCardForm.get('title')?.hasError('required') && 
+        createCardForm.get('title')?.touched }"
+      />
+    </label>
+    <div 
+      class="create-card-form__error-message" 
+      *ngIf="createCardForm.get('title')?.hasError('required') && 
+      createCardForm.get('title')?.touched">
+      Please enter a title.
+    </div>
+    <label class="create-card-form__label">
+      Description
+      <input 
+        formControlName="description" 
+        type="text" 
+        class="create-card-form__input"
+        [ngClass]="{ 'input-error': createCardForm.get('description')?.hasError('required') && 
+        createCardForm.get('description')?.touched }"
+      />
+    </label>
+    <div 
+      class="create-card-form__error-message" 
+      *ngIf="createCardForm.get('description')?.hasError('required') && 
+      createCardForm.get('description')?.touched">
+      Please enter a description.
+    </div>
+    <label class="create-card-form__label">
+      Img
+      <input 
+        formControlName="image" 
+        type="text" 
+        class="create-card-form__input"
+        [ngClass]="{ 'input-error': createCardForm.get('image')?.hasError('required') && 
+        createCardForm.get('image')?.touched }"
+      />
+    </label>
+    <div 
+      class="create-card-form__error-message" 
+      *ngIf="createCardForm.get('image')?.hasError('required') && 
+      createCardForm.get('image')?.touched">
+      Please enter a link to the image.
+    </div>
+    <label class="create-card-form__label">
+      Link video
+      <input 
+        formControlName="video" 
+        type="text" 
+        class="create-card-form__input"
+        [ngClass]="{ 'input-error': createCardForm.get('video')?.hasError('required') && 
+        createCardForm.get('video')?.touched }"
+      />
+    </label>
+    <div 
+      class="create-card-form__error-message" 
+      *ngIf="createCardForm.get('video')?.hasError('required') && 
+      createCardForm.get('video')?.touched">
+      Please enter a link to the video.
+    </div>
+    <label class="create-card-form__label">
+      Creation date
+      <input 
+        formControlName="date" 
+        type="text" 
+        class="create-card-form__input"
+        [ngClass]="{ 'input-error': createCardForm.get('date')?.hasError('required') && 
+        createCardForm.get('date')?.touched }"
+      />
+    </label>
+    <div 
+      class="create-card-form__error-message" 
+      *ngIf="createCardForm.get('date')?.hasError('required') && 
+      createCardForm.get('date')?.touched">
+      Please enter a creation date.
+    </div>
+    <button 
+      (click)="createCard($event)" 
+      class="create-card-form__btn" 
+      [disabled]="createCardForm.invalid">
+      Create card
+    </button>
+  </form>
+</div>
