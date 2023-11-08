@@ -19,6 +19,11 @@ const routes: Routes = [
     component: NotFoundPageComponent,
   },
   {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
+    canMatch: [authGuard],
+  },
+  {
     path: '**',
     redirectTo: 'not-found',
   },
