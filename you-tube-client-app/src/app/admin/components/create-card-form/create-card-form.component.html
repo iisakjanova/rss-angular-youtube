@@ -8,29 +8,25 @@
         type="text" 
         class="create-card-form__input"
         [ngClass]="{ 'input-error': 
-          (createCardForm.get('title')?.hasError('required') || 
-          createCardForm.get('title')?.hasError('minlength') || 
-          createCardForm.get('title')?.hasError('maxlength') ) && 
-          createCardForm.get('title')?.touched 
+          (checkInputError('title', 'required') || 
+          checkInputError('title', 'minlength') || 
+          checkInputError('title', 'maxlength')) 
         }"
       />
     </label>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('title')?.hasError('required') && 
-      createCardForm.get('title')?.touched">
+      *ngIf="checkInputError('title', 'required')">
       Please enter a title.
     </div>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('title')?.hasError('minlength') && 
-      createCardForm.get('title')?.touched">
+      *ngIf="checkInputError('title', 'minlength')">
       The title is too short.
     </div>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('title')?.hasError('maxlength') && 
-      createCardForm.get('title')?.touched">
+      *ngIf="checkInputError('title', 'maxlength')">
       The title is too long.
     </div>
     <label class="create-card-form__label">
@@ -39,14 +35,12 @@
         formControlName="description" 
         type="text" 
         class="create-card-form__input"
-        [ngClass]="{ 'input-error': createCardForm.get('description')?.hasError('maxlength') && 
-        createCardForm.get('description')?.touched }"
+        [ngClass]="{ 'input-error': checkInputError('description', 'maxlength') }"
       />
     </label>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('description')?.hasError('maxlength') && 
-      createCardForm.get('description')?.touched">
+      *ngIf="checkInputError('description', 'maxlength')">
       The description is too long.
     </div>
     <label class="create-card-form__label">
@@ -55,14 +49,12 @@
         formControlName="image" 
         type="text" 
         class="create-card-form__input"
-        [ngClass]="{ 'input-error': createCardForm.get('image')?.hasError('required') && 
-        createCardForm.get('image')?.touched }"
+        [ngClass]="{ 'input-error': checkInputError('image', 'required') }"
       />
     </label>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('image')?.hasError('required') && 
-      createCardForm.get('image')?.touched">
+      *ngIf="checkInputError('image', 'required')">
       Please enter a link to the image.
     </div>
     <label class="create-card-form__label">
@@ -71,14 +63,12 @@
         formControlName="video" 
         type="text" 
         class="create-card-form__input"
-        [ngClass]="{ 'input-error': createCardForm.get('video')?.hasError('required') && 
-        createCardForm.get('video')?.touched }"
+        [ngClass]="{ 'input-error': checkInputError('video', 'required') }"
       />
     </label>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('video')?.hasError('required') && 
-      createCardForm.get('video')?.touched">
+      *ngIf="checkInputError('video', 'required')">
       Please enter a link to the video.
     </div>
     <label class="create-card-form__label">
@@ -88,21 +78,18 @@
         type="date" 
         class="create-card-form__input"
         [ngClass]="{ 'input-error': 
-          (createCardForm.get('date')?.hasError('required') ||
-          createCardForm.get('date')?.hasError('futureDate')) && 
-        createCardForm.get('date')?.touched }"
+          (checkInputError('date', 'required') ||
+          checkInputError('date', 'futureDate')) }"
       />
     </label>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('date')?.hasError('required') && 
-      createCardForm.get('date')?.touched">
+      *ngIf="checkInputError('date', 'required')">
       Please enter a creation date.
     </div>
     <div 
       class="create-card-form__error-message" 
-      *ngIf="createCardForm.get('date')?.hasError('futureDate') && 
-      createCardForm.get('date')?.touched">
+      *ngIf="checkInputError('date', 'futureDate')">
       The date is invalid.
     </div>
     <div formArrayName="tags">
@@ -111,15 +98,13 @@
         <div *ngFor="let tagControl of getControls(); let i = index">
           <input 
             class="create-card-form__input" 
-            [ngClass]="{ 'input-error': createCardForm.get('tags.' + i)?.hasError('required') && 
-              createCardForm.get('tags.' + i)?.touched }"
+            [ngClass]="{ 'input-error': checkInputError('tags.' + i, 'required') }"
             [formControlName]="i" 
             type="text" 
             placeholder="Tag" />
           <div 
             class="create-card-form__error-message" 
-            *ngIf="createCardForm.get('tags.' + i)?.hasError('required') && 
-            createCardForm.get('tags.' + i)?.touched">
+            *ngIf="checkInputError('tags.' + i, 'required')">
             Please enter a tag.
           </div>
         </div>

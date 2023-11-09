@@ -63,4 +63,11 @@ export class CreateCardFormComponent {
     e.preventDefault();
     this.resetForm();
   }
+
+  checkInputError(name: string, errorType: string): boolean | undefined {
+    return (
+      this.createCardForm.get(name)?.hasError(errorType)
+      && this.createCardForm.get(name)?.touched
+    );
+  }
 }
