@@ -30,6 +30,9 @@
         formControlName="password" 
         type="password" 
         class="login-form__input"
+        [ngClass]="{ 'input-error': (loginForm.get('password')?.hasError('required') || 
+          loginForm.get('password')?.hasError('passwordStrength') ) && 
+          loginForm.get('password')?.touched }"
       />
     </label>
     <div 
