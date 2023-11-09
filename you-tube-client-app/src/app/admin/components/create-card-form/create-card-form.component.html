@@ -103,6 +103,30 @@
       createCardForm.get('date')?.touched">
       The date is invalid.
     </div>
+    <div formArrayName="tags">
+      <span class="create-card-form__label">
+        Tags
+        <div *ngFor="let tagControl of getControls(); let i = index">
+          <input 
+            class="create-card-form__input" 
+            [formControlName]="i" 
+            type="text" 
+            placeholder="Tag" />
+          <div 
+            class="create-card-form__error-message" 
+            *ngIf="createCardForm.get('tags.' + i)?.hasError('required') && 
+            createCardForm.get('tags.' + i)?.touched">
+            Please enter a tag.
+          </div>
+        </div>
+      </span>
+    </div>
+    <button 
+      class="create-card-form__btn create-card-form__btn_add-tag" 
+      type="button" 
+      (click)="addTag()">
+      add tag
+    </button>
     <button 
       (click)="createCard($event)" 
       class="create-card-form__btn" 

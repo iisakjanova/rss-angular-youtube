@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
   FormGroup,
   Validators,
@@ -30,7 +31,20 @@ export class CreateCardFormComponent {
       image: ['', [Validators.required]],
       video: ['', [Validators.required]],
       date: ['', [Validators.required, futureDateValidator]],
+      tags: this.fb.array([this.fb.control('', Validators.required)]),
     });
+  }
+
+  addTag() {
+    const tags = <FormArray> this.createCardForm.get('tags');
+
+    if (tags.length < 5) {
+      tags.push(this.fb.control('', Validators.required));
+    }
+  }
+
+  getControls() {
+    return (this.createCardForm.get('tags') as FormArray).controls;
   }
 
   createCard(e: Event) {

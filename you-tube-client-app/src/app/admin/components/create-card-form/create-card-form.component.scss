@@ -25,6 +25,7 @@
     height: 37px;
     background: #E0E0E0;
     border: none;
+    width: 100%;
   }
 
   &__error-message {
@@ -50,6 +51,12 @@
 
     &:disabled {
       background-color: #B1B1B1;
+    }
+
+    &_add-tag {
+      width: 70px;
+      margin-left: 0;
+      margin-top: 0;
     }
   }
 
