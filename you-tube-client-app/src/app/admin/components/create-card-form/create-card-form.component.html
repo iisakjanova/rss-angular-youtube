@@ -87,7 +87,9 @@
         formControlName="date" 
         type="date" 
         class="create-card-form__input"
-        [ngClass]="{ 'input-error': createCardForm.get('date')?.hasError('futureDate') && 
+        [ngClass]="{ 'input-error': 
+          (createCardForm.get('date')?.hasError('required') ||
+          createCardForm.get('date')?.hasError('futureDate')) && 
         createCardForm.get('date')?.touched }"
       />
     </label>
@@ -109,6 +111,8 @@
         <div *ngFor="let tagControl of getControls(); let i = index">
           <input 
             class="create-card-form__input" 
+            [ngClass]="{ 'input-error': createCardForm.get('tags.' + i)?.hasError('required') && 
+              createCardForm.get('tags.' + i)?.touched }"
             [formControlName]="i" 
             type="text" 
             placeholder="Tag" />
@@ -127,11 +131,19 @@
       (click)="addTag()">
       add tag
     </button>
-    <button 
+    <div class="create-card-form__btns-group">
+      <button 
+        class="create-card-form__btn" 
+        type="button" 
+        (click)="resetForm()">
+        Reset
+      </button>
+      <button 
       (click)="createCard($event)" 
       class="create-card-form__btn" 
       [disabled]="createCardForm.invalid">
       Create card
     </button>
+    </div>
   </form>
 </div>

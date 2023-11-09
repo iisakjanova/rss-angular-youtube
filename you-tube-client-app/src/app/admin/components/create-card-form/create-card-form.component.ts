@@ -14,14 +14,15 @@ import { futureDateValidator } from '../../helpers/futureDateValidator';
   styleUrls: ['./create-card-form.component.scss'],
 })
 export class CreateCardFormComponent {
-  createCardForm!: FormGroup;
+  createCardForm: FormGroup;
 
-  card!: {
+  initialFormValue: {
     title: '',
     description: '',
     image: '',
     video: '',
     date: '',
+    tags: []
   };
 
   constructor(private fb: FormBuilder) {
@@ -33,10 +34,12 @@ export class CreateCardFormComponent {
       date: ['', [Validators.required, futureDateValidator]],
       tags: this.fb.array([this.fb.control('', Validators.required)]),
     });
+
+    this.initialFormValue = this.createCardForm.value;
   }
 
   addTag() {
-    const tags = <FormArray> this.createCardForm.get('tags');
+    const tags = this.createCardForm.get('tags') as FormArray;
 
     if (tags.length < 5) {
       tags.push(this.fb.control('', Validators.required));
@@ -47,15 +50,17 @@ export class CreateCardFormComponent {
     return (this.createCardForm.get('tags') as FormArray).controls;
   }
 
+  resetForm() {
+    this.createCardForm.reset(this.initialFormValue);
+    const tags = this.createCardForm.get('tags') as FormArray;
+
+    while (tags.length > 1) {
+      tags.removeAt(1);
+    }
+  }
+
   createCard(e: Event) {
     e.preventDefault();
-
-    this.card = {
-      title: this.createCardForm.get('title')?.value,
-      description: this.createCardForm.get('description')?.value,
-      image: this.createCardForm.get('image')?.value,
-      video: this.createCardForm.get('video')?.value,
-      date: this.createCardForm.get('date')?.value,
-    };
+    this.resetForm();
   }
 }
