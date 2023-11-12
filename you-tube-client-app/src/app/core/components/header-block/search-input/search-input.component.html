@@ -1,4 +1,9 @@
-<form class="search-input-block" (submit)="onSearchSubmit($event)">
-  <input class="search-input-block__input" placeholder="What are you want to find out?"/>
-  <button class="search-input-block__btn">search</button>
+<form class="search-input-block">
+  <input 
+    type="text" 
+    [(ngModel)]="searchTerm" 
+    name="searchTerm" 
+    (input)="onSearchInputChange()" 
+    class="search-input-block__input" 
+    placeholder="What are you want to find out?"/>
 </form>
