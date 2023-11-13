@@ -2,7 +2,7 @@
   <a [routerLink]="['/youtube']" class="detailed-card__btn" [publicationDate]="item.snippet.publishedAt" appButtonHighlight><</a>
   <div class="detailed-card__inner">
     <div class="detailed-card__video-thumbnail">
-      <img src={{item.snippet.thumbnails.standard.url}} alt={{item.snippet.title}} />
+      <img src={{item.snippet.thumbnails.high.url}} alt={{item.snippet.title}} />
     </div>
     <div class="detailed-card__content" [publicationDate]="item.snippet.publishedAt" appBorderHighlight>
       <div class="detailed-card__header">
