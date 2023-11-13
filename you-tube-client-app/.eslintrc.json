@@ -41,6 +41,7 @@
             "exceptMethods": ["getCompareValue", "transform"]
           }
         ],
+        "no-console": ["error", { "allow": ["error"] }],
         // TypeScript Eslint rules
         "@typescript-eslint/indent": [
             "error",

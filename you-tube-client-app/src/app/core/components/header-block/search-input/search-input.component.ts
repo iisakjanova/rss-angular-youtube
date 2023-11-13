@@ -2,6 +2,7 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 import { SearchService } from 'src/app/core/services/search/search.service';
+import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
 import { YoutubeApiService } from 'src/app/youtube/services/youtube/youtube-api.service';
 
 @Component({
@@ -16,7 +17,11 @@ export class SearchInputComponent implements OnDestroy {
 
   searchInput$ = new Subject<string>();
 
-  constructor(private searchService: SearchService, private youtubeApiService: YoutubeApiService) {
+  constructor(
+    private searchService: SearchService,
+    private youtubeService: YoutubeService,
+    private youtubeApiService: YoutubeApiService,
+  ) {
     this.searchInput$
       .pipe(
         debounceTime(500),
@@ -25,10 +30,9 @@ export class SearchInputComponent implements OnDestroy {
       )
       .subscribe((term) => {
         if (term.length >= 3) {
-          this.youtubeApiService.search(term).subscribe((results) => {
-            console.log(results);
+          this.youtubeApiService.searchAndFetchDetails(term).subscribe((results) => {
+            this.youtubeService.updateSearchItems(results);
           });
-
           this.searchService.displaySearchResults();
         }
       });

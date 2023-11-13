@@ -19,7 +19,7 @@ export class DetailedPageComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       this.itemId = params['id'];
-      this.searchItem = this.youtubeService.searchItems.find((item) => item.id === this.itemId);
+      this.searchItem = this.youtubeService.searchItems.find((item) => item.id.videoId === this.itemId);
 
       if (!this.searchItem) {
         this.router.navigate(['/not-found']);
