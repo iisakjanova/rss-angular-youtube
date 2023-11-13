@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -53,6 +54,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     CommonModule,
     CustomButtonComponent,
     YoutubeRoutingModule,
+    HttpClientModule,
   ],
   exports: [FilteringComponent, SearchResultsComponent],
 })
