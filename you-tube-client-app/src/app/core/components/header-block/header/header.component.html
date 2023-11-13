@@ -7,12 +7,20 @@
     </div>
     <app-login-info></app-login-info>
     <button 
-      class="header__logout-btn" 
+      class="header__login-logout-btn" 
       type="button" 
-      (click)="logout($event)" 
-      *ngIf="authService.isLoggedIn"
+      (click)="logout()" 
+      *ngIf="(authService.isLoggedIn$ | async)"
       >
         Logout
+    </button>
+    <button 
+      class="header__login-logout-btn" 
+      type="button" 
+      (click)="login()" 
+      *ngIf="(authService.isLoggedIn$ | async) === false"
+    >
+      Login
     </button>
   </div>
 </header>

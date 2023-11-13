@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { delay, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -10,11 +10,19 @@ export class AuthService {
 
   authTokenValue = 'fakeAuthToken';
 
-  constructor() {
-    this.isLoggedIn = this.checkLoginStatus();
-  }
+  // BehaviorSubject to emit the login status
+  private isLoggedInSubject: BehaviorSubject<boolean>;
 
-  isLoggedIn: boolean;
+  // Observable that clients can subscribe to for login status changes
+  isLoggedIn$: Observable<boolean>;
+
+  constructor() {
+    // Initialize the BehaviorSubject with the current login status
+    this.isLoggedInSubject = new BehaviorSubject<boolean>(this.checkLoginStatus());
+
+    // Expose the BehaviorSubject as an observable
+    this.isLoggedIn$ = this.isLoggedInSubject.asObservable();
+  }
 
   saveAuthToken(token: string): void {
     localStorage.setItem(this.authTokenKey, token);
@@ -42,5 +50,13 @@ export class AuthService {
   logout(): void {
     this.isLoggedIn = false;
     this.removeAuthToken();
+  }
+
+  get isLoggedIn(): boolean {
+    return this.isLoggedInSubject.value;
+  }
+
+  set isLoggedIn(value: boolean) {
+    this.isLoggedInSubject.next(value);
   }
 }

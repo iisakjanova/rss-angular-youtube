@@ -10,9 +10,12 @@ import { AuthService } from 'src/app/auth/services/auth/auth.service';
 export class HeaderComponent {
   constructor(public authService: AuthService, private router: Router) {}
 
-  logout(e: Event) {
-    e.preventDefault();
+  login() {
+    const redirectUrl = '/login';
+    this.router.navigate([redirectUrl]);
+  }
 
+  logout() {
     const redirectUrl = '/login';
     this.authService.logout();
     this.router.navigate([redirectUrl]);
