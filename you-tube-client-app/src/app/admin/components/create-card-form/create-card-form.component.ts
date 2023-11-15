@@ -5,7 +5,10 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { addCustomCard } from 'src/app/redux/actions/admin.actions';
 
+import { CustomCard } from '../../admin.model';
 import { futureDateValidator } from '../../helpers/futureDateValidator';
 
 @Component({
@@ -25,7 +28,7 @@ export class CreateCardFormComponent {
     tags: []
   };
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private store: Store) {
     this.createCardForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       description: ['', [Validators.maxLength(255)]],
@@ -61,6 +64,16 @@ export class CreateCardFormComponent {
 
   createCard(e: Event) {
     e.preventDefault();
+
+    const newCard: CustomCard = {
+      title: this.createCardForm.value.title,
+      description: this.createCardForm.value.description,
+      image: this.createCardForm.value.image,
+      video: this.createCardForm.value.video,
+      date: this.createCardForm.value.date,
+    };
+    this.store.dispatch(addCustomCard({ card: newCard }));
+
     this.resetForm();
   }
 
