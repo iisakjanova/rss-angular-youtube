@@ -5,9 +5,12 @@
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json" 
+    "project": "./tsconfig.json"
   },
-  "plugins": ["simple-import-sort", "@typescript-eslint"],
+  "plugins": [
+    "simple-import-sort",
+    "@typescript-eslint"
+  ],
   "overrides": [
     {
       "files": [
@@ -21,7 +24,6 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
-        // ESLint rules
         "import/prefer-default-export": "off",
         "import/first": "error",
         "import/newline-after-import": "error",
@@ -30,7 +32,7 @@
           "error",
           {
             "code": 140,
-            "ignorePattern":"^(import\\s.+\\sfrom\\s.+|\\} from)"
+            "ignorePattern": "^(import\\s.+\\sfrom\\s.+|\\} from)"
           }
         ],
         "simple-import-sort/imports": "error",
@@ -38,18 +40,26 @@
         "class-methods-use-this": [
           "error",
           {
-            "exceptMethods": ["getCompareValue", "transform"]
+            "exceptMethods": [
+              "getCompareValue",
+              "transform"
+            ]
           }
         ],
-        "no-console": ["error", { "allow": ["error"] }],
-        // TypeScript Eslint rules
+        "no-console": [
+          "error",
+          {
+            "allow": [
+              "error"
+            ]
+          }
+        ],
         "@typescript-eslint/indent": [
-            "error",
-            2
+          "error",
+          2
         ],
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-explicit-any": 0,
-        // Angular ESLint rules
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -77,6 +87,14 @@
         "plugin:@angular-eslint/template/accessibility"
       ],
       "rules": {}
+    },
+    {
+      "files": [
+        "*.ts"
+      ],
+      "extends": [
+        "plugin:@ngrx/recommended"
+      ]
     }
   ]
 }
