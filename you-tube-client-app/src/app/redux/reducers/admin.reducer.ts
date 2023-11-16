@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { addCustomCard } from '../actions/admin.actions';
+import { addCustomCard, deleteCustomCard } from '../actions/admin.actions';
 import { AdminState, initialAdminState } from '../admin.state';
 
 export const adminReducer = createReducer(
@@ -8,5 +8,9 @@ export const adminReducer = createReducer(
   on(addCustomCard, (state, { card }): AdminState => ({
     ...state,
     cards: [...state.cards, card],
+  })),
+  on(deleteCustomCard, (state, { cardId }): AdminState => ({
+    ...state,
+    cards: state.cards.filter((card) => card.id !== cardId),
   })),
 );

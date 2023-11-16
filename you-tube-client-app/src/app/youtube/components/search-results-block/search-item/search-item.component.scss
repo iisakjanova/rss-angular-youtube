@@ -17,6 +17,25 @@
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
+
+    &__btns {
+      display: flex;
+
+      .delete-btn {
+        margin-left: 10px;
+        background: #EB5757;
+        color: #FFFFFF;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* x-offset, y-offset, blur, and color */
+
+        &:hover {
+          background-color: #D94343;
+          box-shadow: none;
+        }
+      }
+    }
   }
 
   app-video-title {

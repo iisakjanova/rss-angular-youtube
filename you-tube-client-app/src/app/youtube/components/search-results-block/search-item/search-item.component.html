@@ -3,6 +3,9 @@
   <div class="card__content">
     <app-counters *ngIf="item?.statistics" [statistics]="item!.statistics"></app-counters>
     <app-video-title [title]="item?.snippet?.title || card.title"></app-video-title>
-    <app-more-button [id]="item?.id?.videoId || card.id"></app-more-button>
+    <div class="card__content__btns">
+      <app-more-button [id]="item?.id?.videoId || card.id"></app-more-button>
+      <button *ngIf="!item" (click)="deleteCard(card.id)" class="delete-btn">Delete</button>
+    </div>
   </div>
 </div>

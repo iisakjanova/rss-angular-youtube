@@ -5,3 +5,8 @@ export const addCustomCard = createAction(
   '[Admin] Add Card',
   props<{ card: CustomCard }>(),
 );
+
+export const deleteCustomCard = createAction(
+  '[Admin] Delete Card',
+  props<{ cardId: string }>(),
+);
