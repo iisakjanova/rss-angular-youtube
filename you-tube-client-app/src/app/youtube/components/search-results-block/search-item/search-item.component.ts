@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CustomCard } from 'src/app/admin/admin.model';
 
 import { SearchItem } from '../search-item-model';
 
@@ -8,5 +9,7 @@ import { SearchItem } from '../search-item-model';
   styleUrls: ['./search-item.component.scss'],
 })
 export class SearchItemComponent {
-  @Input() item!: SearchItem;
+  @Input() item!: SearchItem | null;
+
+  @Input() card!: CustomCard;
 }

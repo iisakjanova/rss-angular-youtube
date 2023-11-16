@@ -19,6 +19,8 @@ import { futureDateValidator } from '../../helpers/futureDateValidator';
 export class CreateCardFormComponent {
   createCardForm: FormGroup;
 
+  id = 0;
+
   initialFormValue: {
     title: '',
     description: '',
@@ -64,16 +66,18 @@ export class CreateCardFormComponent {
 
   createCard(e: Event) {
     e.preventDefault();
+    this.id += 1;
 
     const newCard: CustomCard = {
+      id: this.id.toString(),
       title: this.createCardForm.value.title,
       description: this.createCardForm.value.description,
       image: this.createCardForm.value.image,
       video: this.createCardForm.value.video,
       date: this.createCardForm.value.date,
     };
-    this.store.dispatch(addCustomCard({ card: newCard }));
 
+    this.store.dispatch(addCustomCard({ card: newCard }));
     this.resetForm();
   }
 
