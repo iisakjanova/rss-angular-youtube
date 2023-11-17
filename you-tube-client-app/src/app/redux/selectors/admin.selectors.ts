@@ -8,3 +8,8 @@ export const selectCustomCards = createSelector(
   selectAdminState,
   (state) => state.cards,
 );
+
+export const selectItems = createSelector(
+  selectAdminState,
+  (state) => state.items,
+);

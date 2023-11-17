@@ -6,7 +6,9 @@ import { FilterService } from 'src/app/core/services/filter/filter.service';
 import { SearchService } from 'src/app/core/services/search/search.service';
 import { SortingService } from 'src/app/core/services/sort/sorting.service';
 import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
-import { selectCustomCards } from 'src/app/redux/selectors/admin.selectors';
+import { selectCustomCards, selectItems } from 'src/app/redux/selectors/admin.selectors';
+
+import { SearchItem } from '../search-item-model';
 
 @Component({
   selector: 'app-search-results',
@@ -14,7 +16,9 @@ import { selectCustomCards } from 'src/app/redux/selectors/admin.selectors';
   styleUrls: ['./search-results.component.scss'],
 })
 export class SearchResultsComponent {
-  customCards$!: Observable<CustomCard[]>;
+  customCards$: Observable<CustomCard[]>;
+
+  items$: Observable<SearchItem[]>;
 
   constructor(
     public searchService: SearchService,
@@ -22,8 +26,8 @@ export class SearchResultsComponent {
     public filterService: FilterService,
     public youtubeService: YoutubeService,
     private store: Store,
-
   ) {
     this.customCards$ = this.store.select(selectCustomCards);
+    this.items$ = this.store.select(selectItems);
   }
 }

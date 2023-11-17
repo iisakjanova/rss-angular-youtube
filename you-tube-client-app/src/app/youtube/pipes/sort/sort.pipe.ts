@@ -11,7 +11,9 @@ export class SortPipe implements PipeTransform {
       return array;
     }
 
-    return array.sort((a, b) => {
+    const newArray = [...array];
+
+    return newArray.sort((a, b) => {
       const compareValueA = this.getCompareValue(a, propertyName);
       const compareValueB = this.getCompareValue(b, propertyName);
 

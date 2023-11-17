@@ -1,8 +1,10 @@
 <div class="container cards-list" *ngIf="searchService.showResults">
   <app-search-item *ngFor="let card of customCards$ | async" [card]="card"></app-search-item>
-  <app-search-item *ngFor="let item of youtubeService.searchItems | searchFilter: filterService.searchTerm | sort: sortingService.sortOrder: sortingService.sortCriteria" 
-  [item]="item" 
-  [publicationDate]="item.snippet.publishedAt"
-  appBorderHighlight
-></app-search-item>
+  <ng-container *ngIf="(items$ | async) as items">
+    <app-search-item  *ngFor="let item of items | searchFilter: filterService.searchTerm | sort: sortingService.sortOrder: sortingService.sortCriteria" 
+      [item]="item" 
+      [publicationDate]="item.snippet.publishedAt"
+      appBorderHighlight
+    ></app-search-item>
+  </ng-container>
 </div>
