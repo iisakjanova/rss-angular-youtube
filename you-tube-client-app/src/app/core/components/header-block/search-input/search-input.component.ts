@@ -1,9 +1,6 @@
 import { Component, OnDestroy } from '@angular/core';
-import { Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { SearchService } from 'src/app/core/services/search/search.service';
-import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
-import { YoutubeApiService } from 'src/app/youtube/services/youtube/youtube-api.service';
+import { Store } from '@ngrx/store';
+import { componentDestroyed, searchInput } from 'src/app/redux/actions/admin.actions';
 
 @Component({
   selector: 'app-search-input',
@@ -11,39 +8,17 @@ import { YoutubeApiService } from 'src/app/youtube/services/youtube/youtube-api.
   styleUrls: ['./search-input.component.scss'],
 })
 export class SearchInputComponent implements OnDestroy {
-  private destroy$ = new Subject<void>();
-
   searchTerm = '';
 
-  searchInput$ = new Subject<string>();
-
-  constructor(
-    private searchService: SearchService,
-    private youtubeService: YoutubeService,
-    private youtubeApiService: YoutubeApiService,
-  ) {
-    this.searchInput$
-      .pipe(
-        debounceTime(500),
-        distinctUntilChanged(),
-        takeUntil(this.destroy$),
-      )
-      .subscribe((term) => {
-        if (term.length >= 3) {
-          this.youtubeApiService.searchAndFetchDetails(term).subscribe((results) => {
-            this.youtubeService.updateSearchItems(results);
-          });
-          this.searchService.displaySearchResults();
-        }
-      });
-  }
+  constructor(private store: Store) {}
 
   ngOnDestroy() {
-    this.destroy$.next();
-    this.destroy$.complete();
+    this.store.dispatch(componentDestroyed());
   }
 
   onSearchInputChange() {
-    this.searchInput$.next(this.searchTerm);
+    if (this.searchTerm.length >= 3) {
+      this.store.dispatch(searchInput({ payload: this.searchTerm }));
+    }
   }
 }
