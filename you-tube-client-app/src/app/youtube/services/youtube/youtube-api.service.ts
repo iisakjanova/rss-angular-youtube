@@ -7,6 +7,10 @@ import { environment } from 'src/environments/environment';
 import { SearchItem } from '../../components/search-results-block/search-item-model';
 import { SearchResponse } from '../../components/search-results-block/search-response-model';
 
+export interface SearchResponseNormalized {
+  [key: string]: SearchItem
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -56,7 +60,7 @@ export class YoutubeApiService {
     return forkJoin(requests) as Observable<SearchResponse[]>;
   }
 
-  searchAndFetchDetails(query: string): Observable<SearchItem[]> {
+  searchAndFetchDetails(query: string): Observable<SearchResponseNormalized> {
     // Combine search and video details requests
     return this.search(query).pipe(
       switchMap((searchResults) => {
@@ -65,16 +69,16 @@ export class YoutubeApiService {
 
         // Fetch video details
         return this.getVideoDetails(videoIds).pipe(
-          // Combine search results and video details
-          map((videoDetails) => searchResults.items.map((searchItem: SearchItem) => {
-            // Find the matching video detail based on id
+          map((videoDetails) => searchResults.items.reduce((acc, searchItem) => {
             const matchingVideoDetail = videoDetails.find((videoDetail: any) => videoDetail.items[0].id === searchItem.id.videoId);
 
-            return {
+            acc[searchItem.id.videoId] = {
               ...searchItem,
               statistics: matchingVideoDetail ? matchingVideoDetail.items[0].statistics : null,
             } as SearchItem;
-          })),
+
+            return acc;
+          }, {} as { [id: string]: SearchItem })),
         );
       }),
       catchError((error) => {

@@ -11,5 +11,5 @@ export const selectCustomCards = createSelector(
 
 export const selectItems = createSelector(
   selectAdminState,
-  (state) => state.items,
+  (state) => state.list.map((id) => state.items[id]).filter((item) => !!item),
 );

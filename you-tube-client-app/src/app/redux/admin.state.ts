@@ -1,14 +1,16 @@
 import type { CustomCard } from '../admin/admin.model';
-import { SearchItem } from '../youtube/components/search-results-block/search-item-model';
+import { SearchResponseNormalized } from '../youtube/services/youtube/youtube-api.service';
 
 export interface AdminState {
   cards: CustomCard[];
-  items: SearchItem[];
+  items: SearchResponseNormalized;
+  list: string[];
   favourite: string[];
 }
 
 export const initialAdminState: AdminState = {
   cards: [],
-  items: [],
+  items: {},
+  list: [],
   favourite: [],
 };
