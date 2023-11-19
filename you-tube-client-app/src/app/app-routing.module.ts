@@ -24,6 +24,11 @@ const routes: Routes = [
     canMatch: [authGuard],
   },
   {
+    path: 'favorite',
+    loadChildren: () => import('./favorite/favorite.module').then((m) => m.FavoriteModule),
+    canMatch: [authGuard],
+  },
+  {
     path: '**',
     redirectTo: 'not-found',
   },
