@@ -23,3 +23,13 @@ export const fetchItemsSuccess = createAction(
 );
 
 export const componentDestroyed = createAction('[Admin] Component Destroyed');
+
+export const addToFavourite = createAction(
+  '[Admin] Add To Favourite',
+  props<{ id: string }>(),
+);
+
+export const removeFromFavourite = createAction(
+  '[Admin] Remove From Favourite',
+  props<{ id: string }>(),
+);

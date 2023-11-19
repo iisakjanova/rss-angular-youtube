@@ -4,9 +4,11 @@ import { SearchItem } from '../youtube/components/search-results-block/search-it
 export interface AdminState {
   cards: CustomCard[];
   items: SearchItem[];
+  favourite: string[];
 }
 
 export const initialAdminState: AdminState = {
   cards: [],
   items: [],
+  favourite: [],
 };

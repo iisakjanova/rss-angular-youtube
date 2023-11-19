@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { addCustomCard, deleteCustomCard, fetchItemsSuccess } from '../actions/admin.actions';
+import {
+  addCustomCard, addToFavourite, deleteCustomCard, fetchItemsSuccess, removeFromFavourite,
+} from '../actions/admin.actions';
 import { AdminState, initialAdminState } from '../admin.state';
 
 export const adminReducer = createReducer(
@@ -16,5 +18,13 @@ export const adminReducer = createReducer(
   on(fetchItemsSuccess, (state, { items }): AdminState => ({
     ...state,
     items,
+  })),
+  on(addToFavourite, (state, { id }): AdminState => ({
+    ...state,
+    favourite: [...state.favourite, id],
+  })),
+  on(removeFromFavourite, (state, { id }) => ({
+    ...state,
+    favourite: state.favourite.filter((itemId) => itemId !== id),
   })),
 );
