@@ -5,12 +5,12 @@ export interface AdminState {
   cards: CustomCard[];
   items: SearchResponseNormalized;
   list: string[];
-  favourite: string[];
+  favorite: string[];
 }
 
 export const initialAdminState: AdminState = {
   cards: [],
   items: {},
   list: [],
-  favourite: [],
+  favorite: [],
 };

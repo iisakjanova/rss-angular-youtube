@@ -13,3 +13,13 @@ export const selectItems = createSelector(
   selectAdminState,
   (state) => state.list.map((id) => state.items[id]).filter((item) => !!item),
 );
+
+export const selectFavoriteItems = createSelector(
+  selectAdminState,
+  (state) => state.favorite.map((id) => state.items[id]).filter((item) => !!item),
+);
+
+export const selectFavoriteIds = createSelector(
+  selectAdminState,
+  (state) => state.favorite,
+);

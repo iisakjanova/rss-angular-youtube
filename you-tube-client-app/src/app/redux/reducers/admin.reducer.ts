@@ -21,11 +21,11 @@ export const adminReducer = createReducer(
   })),
   on(addToFavourite, (state, { id }): AdminState => ({
     ...state,
-    favourite: [...state.favourite, id],
+    favorite: [...state.favorite, id],
   })),
   on(removeFromFavourite, (state, { id }) => ({
     ...state,
-    favourite: state.favourite.filter((itemId) => itemId !== id),
+    favorite: state.favorite.filter((itemId) => itemId !== id),
   })),
   on(addToList, (state, { id }): AdminState => ({
     ...state,

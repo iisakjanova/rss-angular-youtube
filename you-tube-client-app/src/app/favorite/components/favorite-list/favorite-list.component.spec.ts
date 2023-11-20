@@ -8,7 +8,7 @@ describe('FavoriteListComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FavoriteListComponent]
+      declarations: [FavoriteListComponent],
     });
     fixture = TestBed.createComponent(FavoriteListComponent);
     component = fixture.componentInstance;

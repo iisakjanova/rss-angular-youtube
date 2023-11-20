@@ -1,7 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { map, Observable, take } from 'rxjs';
 import { CustomCard } from 'src/app/admin/admin.model';
 import { addToFavourite, deleteCustomCard, removeFromFavourite } from 'src/app/redux/actions/admin.actions';
+import { selectFavoriteIds } from 'src/app/redux/selectors/admin.selectors';
 
 import { SearchItem } from '../search-item-model';
 
@@ -10,26 +12,37 @@ import { SearchItem } from '../search-item-model';
   templateUrl: './search-item.component.html',
   styleUrls: ['./search-item.component.scss'],
 })
-export class SearchItemComponent {
+export class SearchItemComponent implements OnInit {
   @Input() item!: SearchItem | null;
 
   @Input() card!: CustomCard;
 
-  isFavourite = false;
+  isFavourite$!: Observable<boolean>;
 
   constructor(private store: Store) {}
+
+  ngOnInit(): void {
+    this.isFavourite$ = this.store.select(selectFavoriteIds).pipe(
+      map((favoriteIds) => {
+        const videoId = this.item?.id.videoId;
+        return !!videoId && !!favoriteIds.find((item) => item === videoId);
+      }),
+    );
+  }
 
   deleteCard(cardId: string) {
     this.store.dispatch(deleteCustomCard({ cardId }));
   }
 
   toggleFavourite() {
-    if (this.isFavourite) {
-      this.store.dispatch(removeFromFavourite({ id: this.item?.id.videoId || '' }));
-    } else {
-      this.store.dispatch(addToFavourite({ id: this.item?.id.videoId || '' }));
-    }
-
-    this.isFavourite = !this.isFavourite;
+    const videoId = this.item?.id.videoId || '';
+    // Use take(1) to automatically unsubscribe after one emission
+    this.isFavourite$.pipe(take(1)).subscribe((isFavourite) => {
+      if (isFavourite) {
+        this.store.dispatch(removeFromFavourite({ id: videoId }));
+      } else {
+        this.store.dispatch(addToFavourite({ id: videoId }));
+      }
+    });
   }
 }

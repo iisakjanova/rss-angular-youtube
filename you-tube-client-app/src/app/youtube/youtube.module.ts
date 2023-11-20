@@ -56,6 +56,6 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     YoutubeRoutingModule,
     HttpClientModule,
   ],
-  exports: [FilteringComponent, SearchResultsComponent],
+  exports: [FilteringComponent, SearchResultsComponent, SearchItemComponent],
 })
 export class YouTubeModule {}
