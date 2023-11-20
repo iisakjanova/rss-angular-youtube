@@ -9,9 +9,19 @@ export const selectCustomCards = createSelector(
   (state) => state.cards,
 );
 
+export const selectCustomCardById = (itemId: string) => createSelector(
+  selectAdminState,
+  (state) => state.cards.find((card) => card.id === itemId),
+);
+
 export const selectItems = createSelector(
   selectAdminState,
   (state) => state.list.map((id) => state.items[id]).filter((item) => !!item),
+);
+
+export const selectItemById = (itemId: string) => createSelector(
+  selectAdminState,
+  (state) => state.items[itemId],
 );
 
 export const selectFavoriteItems = createSelector(
