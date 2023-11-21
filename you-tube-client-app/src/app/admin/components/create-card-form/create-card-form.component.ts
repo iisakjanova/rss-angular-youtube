@@ -66,7 +66,7 @@ export class CreateCardFormComponent {
 
   createCard(e: Event) {
     e.preventDefault();
-    this.id += 1;
+    this.id = Math.random();
 
     const newCard: CustomCard = {
       id: this.id.toString(),

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { combineLatest, switchMap, tap } from 'rxjs';
+import { CustomCard } from 'src/app/admin/admin.model';
 import { selectCustomCardById, selectItemById } from 'src/app/redux/selectors/admin.selectors';
 
 import type { SearchItem } from '../../components/search-results-block/search-item-model';
@@ -16,6 +17,8 @@ export class DetailedPageComponent implements OnInit {
   itemId!: string;
 
   searchItem: SearchItem | undefined;
+
+  customCard: CustomCard | undefined;
 
   constructor(
     private router: Router,
@@ -53,8 +56,8 @@ export class DetailedPageComponent implements OnInit {
                 },
               });
             } else {
-              // If either item exists in the store, assign it to 'searchItem'
               this.searchItem = selectedItem;
+              this.customCard = selectedCustomCard;
             }
           }),
         );

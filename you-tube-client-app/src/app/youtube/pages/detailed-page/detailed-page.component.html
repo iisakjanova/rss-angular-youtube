@@ -1,3 +1,4 @@
 <div class="container detailed-page">
-  <app-detailed-card [item]="searchItem" ></app-detailed-card>
+  <app-detailed-card *ngIf="searchItem" [item]="searchItem" ></app-detailed-card>
+  <app-detailed-custom-card *ngIf="customCard" [item]="customCard"></app-detailed-custom-card>
 </div>

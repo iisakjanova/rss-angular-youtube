@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { CustomButtonComponent } from './components/custom-button/custom-button/custom-button.component';
 import { DetailedCardComponent } from './components/detailed-card/detailed-card.component';
+import { DetailedCustomCardComponent } from './components/detailed-custom-card/detailed-custom-card.component';
 import { FilterInputComponent } from './components/filtering-block/filter-input/filter-input.component';
 import { FilteringComponent } from './components/filtering-block/filtering/filtering.component';
 import { SortButtonsComponent } from './components/filtering-block/sort-buttons/sort-buttons.component';
@@ -48,6 +49,7 @@ import { YoutubeRoutingModule } from './youtube-routing.module';
     DetailedPageComponent,
     DetailedCardComponent,
     ButtonHighlightDirective,
+    DetailedCustomCardComponent,
   ],
   imports: [
     FormsModule,

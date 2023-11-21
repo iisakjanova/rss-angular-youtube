@@ -83,4 +83,17 @@
       color: #000000;
     }
   }
+
+  .favourite-btn {
+    margin-left: 10px;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+
+    &.active {
+      svg path {
+        fill: #EB5757;
+      }
+    }
+  }
 } 
