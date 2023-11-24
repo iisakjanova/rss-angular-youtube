@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import type { SearchItem } from 'src/app/youtube/components/search-results-block/search-item-model';
+import type { SearchItem } from 'src/app/youtube/components/search-results-block/models/search-item-model';
 
 @Pipe({
   name: 'searchFilter',

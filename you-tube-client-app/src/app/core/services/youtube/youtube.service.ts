@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SearchItem } from 'src/app/youtube/components/search-results-block/search-item-model';
+import { SearchItem } from 'src/app/youtube/components/search-results-block/models/search-item-model';
 
 @Injectable({
   providedIn: 'root',

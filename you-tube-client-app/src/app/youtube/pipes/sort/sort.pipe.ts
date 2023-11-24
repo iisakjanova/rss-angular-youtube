@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import type { SearchItem } from '../../components/search-results-block/search-item-model';
+import type { SearchItem } from '../../components/search-results-block/models/search-item-model';
 
 @Pipe({
   name: 'sort',

@@ -4,7 +4,7 @@ import { map, Observable, take } from 'rxjs';
 import { addToFavourite, removeFromFavourite } from 'src/app/redux/actions/admin.actions';
 import { selectFavoriteIds } from 'src/app/redux/selectors/admin.selectors';
 
-import type { SearchItem } from '../search-results-block/search-item-model';
+import type { SearchItem } from '../search-results-block/models/search-item-model';
 
 @Component({
   selector: 'app-detailed-card',
@@ -21,14 +21,15 @@ export class DetailedCardComponent implements OnInit {
   ngOnInit(): void {
     this.isFavourite$ = this.store.select(selectFavoriteIds).pipe(
       map((favoriteIds) => {
-        const videoId = this.item?.id.videoId;
+        const videoId = typeof this.item?.id === 'object' ? this.item.id.videoId : this.item?.id;
         return !!videoId && !!favoriteIds.find((item) => item === videoId);
       }),
     );
   }
 
   toggleFavourite() {
-    const videoId = this.item?.id.videoId || '';
+    const videoId = typeof this.item?.id === 'object' ? this.item.id.videoId || '' : this.item?.id || '';
+
     // Use take(1) to automatically unsubscribe after one emission
     this.isFavourite$.pipe(take(1)).subscribe((isFavourite) => {
       if (isFavourite) {

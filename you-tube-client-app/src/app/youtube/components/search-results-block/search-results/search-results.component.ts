@@ -8,7 +8,7 @@ import { SortingService } from 'src/app/core/services/sort/sorting.service';
 import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
 import { selectCustomCards, selectItems } from 'src/app/redux/selectors/admin.selectors';
 
-import { SearchItem } from '../search-item-model';
+import { SearchItem } from '../models/search-item-model';
 
 @Component({
   selector: 'app-search-results',

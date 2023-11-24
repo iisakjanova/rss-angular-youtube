@@ -4,8 +4,8 @@ import { forkJoin, Observable } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
-import { SearchItem } from '../../components/search-results-block/search-item-model';
-import { SearchResponse } from '../../components/search-results-block/search-response-model';
+import { SearchItem } from '../../components/search-results-block/models/search-item-model';
+import { SearchResponse } from '../../components/search-results-block/models/search-response-model';
 
 export interface SearchResponseNormalized {
   [key: string]: SearchItem
@@ -48,7 +48,7 @@ export class YoutubeApiService {
 
       const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-      return this.http.get(`${this.apiUrl}/videos`, { headers, params }).pipe(
+      return this.http.get<SearchResponse>(`${this.apiUrl}/videos`, { headers, params }).pipe(
         catchError((error) => {
           console.error('Error fetching video details:', error);
           throw error;
@@ -57,7 +57,7 @@ export class YoutubeApiService {
     });
 
     // Use forkJoin to combine multiple requests into one
-    return forkJoin(requests) as Observable<SearchResponse[]>;
+    return forkJoin(requests);
   }
 
   searchAndFetchDetails(query: string): Observable<SearchResponseNormalized> {
@@ -65,14 +65,21 @@ export class YoutubeApiService {
     return this.search(query).pipe(
       switchMap((searchResults) => {
         // Extract video IDs from search results
-        const videoIds = searchResults.items.map((item: SearchItem) => item.id.videoId);
+        const videoIds: string[] = searchResults.items
+          .filter((item: SearchItem): item is SearchItem & {
+            id: { videoId: string }
+          } => typeof item.id === 'object' && 'videoId' in item.id)
+          .map((item: SearchItem & { id: { videoId: string } }) => item.id.videoId);
 
         // Fetch video details
         return this.getVideoDetails(videoIds).pipe(
           map((videoDetails) => searchResults.items.reduce((acc, searchItem) => {
-            const matchingVideoDetail = videoDetails.find((videoDetail: any) => videoDetail.items[0].id === searchItem.id.videoId);
+            const videoId = typeof searchItem.id === 'object' ? searchItem.id.videoId : searchItem.id;
+            const matchingVideoDetail = videoDetails.find(
+              (videoDetail: SearchResponse) => videoDetail.items[0].id === videoId,
+            );
 
-            acc[searchItem.id.videoId] = {
+            acc[videoId] = {
               ...searchItem,
               statistics: matchingVideoDetail ? matchingVideoDetail.items[0].statistics : null,
             } as SearchItem;

@@ -6,6 +6,11 @@ import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-pag
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login',
+  },
+  {
     path: 'youtube',
     loadChildren: () => import('./youtube/youtube.module').then((m) => m.YouTubeModule),
     canMatch: [authGuard],

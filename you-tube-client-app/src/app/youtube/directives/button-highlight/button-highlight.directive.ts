@@ -4,7 +4,7 @@ import {
 
 import {
   BLUE, GREEN, RED, YELLOW,
-} from '../border-highlight/colors';
+} from '../constants/colors-constants';
 
 @Directive({
   selector: '[appButtonHighlight]',

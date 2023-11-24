@@ -4,7 +4,7 @@ import {
 
 import {
   BLUE, GREEN, RED, YELLOW,
-} from './colors';
+} from '../constants/colors-constants';
 
 @Directive({
   selector: '[appBorderHighlight]',

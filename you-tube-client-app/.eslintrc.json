@@ -59,7 +59,7 @@
           2
         ],
         "@typescript-eslint/no-shadow": "error",
-        "@typescript-eslint/no-explicit-any": 0,
+        "@typescript-eslint/no-explicit-any": "error",
         "@angular-eslint/directive-selector": [
           "error",
           {

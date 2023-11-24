@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import type { SearchItemStatistics } from '../../search-item-model';
+import type { SearchItemStatistics } from '../../models/search-item-model';
 
 @Component({
   selector: 'app-counters',

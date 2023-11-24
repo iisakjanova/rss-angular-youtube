@@ -5,7 +5,7 @@ import { CustomCard } from 'src/app/admin/admin.model';
 import { addToFavourite, deleteCustomCard, removeFromFavourite } from 'src/app/redux/actions/admin.actions';
 import { selectFavoriteIds } from 'src/app/redux/selectors/admin.selectors';
 
-import { SearchItem } from '../search-item-model';
+import { SearchItem } from '../models/search-item-model';
 
 @Component({
   selector: 'app-search-item',
@@ -21,10 +21,14 @@ export class SearchItemComponent implements OnInit {
 
   constructor(private store: Store) {}
 
+  getButtonId(): string {
+    return typeof this.item?.id === 'object' ? this.item.id.videoId || '' : this.item?.id || this.card.id;
+  }
+
   ngOnInit(): void {
     this.isFavourite$ = this.store.select(selectFavoriteIds).pipe(
       map((favoriteIds) => {
-        const videoId = this.item?.id.videoId;
+        const videoId = typeof this.item?.id === 'object' ? this.item.id.videoId : this.item?.id;
         return !!videoId && !!favoriteIds.find((item) => item === videoId);
       }),
     );
@@ -35,7 +39,8 @@ export class SearchItemComponent implements OnInit {
   }
 
   toggleFavourite() {
-    const videoId = this.item?.id.videoId || '';
+    const videoId = typeof this.item?.id === 'object' ? this.item.id.videoId || '' : this.item?.id || '';
+
     // Use take(1) to automatically unsubscribe after one emission
     this.isFavourite$.pipe(take(1)).subscribe((isFavourite) => {
       if (isFavourite) {
