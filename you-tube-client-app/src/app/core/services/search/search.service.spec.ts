@@ -13,4 +13,13 @@ describe('SearchService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should have initial showResults as false', () => {
+    expect(service.showResults).toBe(false);
+  });
+
+  it('should change showResults to true', () => {
+    service.displaySearchResults();
+    expect(service.showResults).toBe(true);
+  });
 });
