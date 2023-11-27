@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { combineLatest, switchMap, tap } from 'rxjs';
 import { CustomCard } from 'src/app/admin/admin.model';
-import { selectCustomCardById, selectItemById } from 'src/app/redux/selectors/admin.selectors';
 
+import { selectCustomCardById, selectItemById } from '../../../redux/selectors/admin.selectors';
 import type { SearchItem } from '../../components/search-results-block/models/search-item-model';
 import { YoutubeApiService } from '../../services/youtube/youtube-api.service';
 

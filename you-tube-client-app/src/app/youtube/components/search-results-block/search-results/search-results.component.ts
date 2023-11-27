@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { CustomCard } from 'src/app/admin/admin.model';
-import { FilterService } from 'src/app/core/services/filter/filter.service';
-import { SearchService } from 'src/app/core/services/search/search.service';
-import { SortingService } from 'src/app/core/services/sort/sorting.service';
-import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
-import { selectCustomCards, selectItems } from 'src/app/redux/selectors/admin.selectors';
 
+import { FilterService } from '../../../../core/services/filter/filter.service';
+import { SearchService } from '../../../../core/services/search/search.service';
+import { SortingService } from '../../../../core/services/sort/sorting.service';
+import { YoutubeService } from '../../../../core/services/youtube/youtube.service';
+import { selectCustomCards, selectItems } from '../../../../redux/selectors/admin.selectors';
 import { SearchItem } from '../models/search-item-model';
 
 @Component({

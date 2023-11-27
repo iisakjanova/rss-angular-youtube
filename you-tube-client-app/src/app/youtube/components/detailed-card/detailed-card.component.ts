@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, take } from 'rxjs';
-import { addToFavourite, removeFromFavourite } from 'src/app/redux/actions/admin.actions';
-import { selectFavoriteIds } from 'src/app/redux/selectors/admin.selectors';
 
+import { addToFavourite, removeFromFavourite } from '../../../redux/actions/admin.actions';
+import { selectFavoriteIds } from '../../../redux/selectors/admin.selectors';
 import type { SearchItem } from '../search-results-block/models/search-item-model';
 
 @Component({

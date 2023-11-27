@@ -1,13 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { of } from 'rxjs';
-import { FilterService } from 'src/app/core/services/filter/filter.service';
-import { SearchService } from 'src/app/core/services/search/search.service';
-import { SortingService } from 'src/app/core/services/sort/sorting.service';
-import { YoutubeService } from 'src/app/core/services/youtube/youtube.service';
-import { AppState } from 'src/app/redux/app.state';
-import { selectCustomCards, selectItems } from 'src/app/redux/selectors/admin.selectors';
 
+import { FilterService } from '../../../../core/services/filter/filter.service';
+import { SearchService } from '../../../../core/services/search/search.service';
+import { SortingService } from '../../../../core/services/sort/sorting.service';
+import { YoutubeService } from '../../../../core/services/youtube/youtube.service';
+import { AppState } from '../../../../redux/app.state';
+import { selectCustomCards, selectItems } from '../../../../redux/selectors/admin.selectors';
 import { SearchResultsComponent } from './search-results.component';
 
 describe('SearchResultsComponent', () => {
@@ -95,7 +94,12 @@ describe('SearchResultsComponent', () => {
     fixture.detectChanges();
 
     // Assert that the component properties are correctly set
-    expect(component.customCards$).toEqual(of(customCards));
-    expect(component.items$).toEqual(of(items));
+    component.customCards$.subscribe((emittedCustomCards) => {
+      expect(emittedCustomCards).toEqual(customCards);
+    });
+
+    component.items$.subscribe((emittedItems) => {
+      expect(emittedItems).toEqual(items);
+    });
   });
 });

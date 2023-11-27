@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
+import { environment } from '../../../../environments/environment';
 import { SearchItem } from '../../components/search-results-block/models/search-item-model';
 import { SearchResponse } from '../../components/search-results-block/models/search-response-model';
 
