@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { addCustomCard } from 'src/app/redux/actions/admin.actions';
 
+import { addCustomCard } from '../../../redux/actions/admin.actions';
 import { CustomCard } from '../../admin.model';
 import { futureDateValidator } from '../../helpers/futureDateValidator';
 

@@ -1,6 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { componentDestroyed, searchInput } from 'src/app/redux/actions/admin.actions';
+
+import { componentDestroyed, searchInput } from '../../../../redux/actions/admin.actions';
 
 @Component({
   selector: 'app-search-input',

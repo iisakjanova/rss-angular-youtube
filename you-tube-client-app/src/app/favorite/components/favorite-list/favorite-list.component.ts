@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectFavoriteItems } from 'src/app/redux/selectors/admin.selectors';
 import { SearchItem } from 'src/app/youtube/components/search-results-block/models/search-item-model';
+
+import { selectFavoriteItems } from '../../../redux/selectors/admin.selectors';
 
 @Component({
   selector: 'app-favorite-list',
